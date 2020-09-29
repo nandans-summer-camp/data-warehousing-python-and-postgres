@@ -139,7 +139,7 @@ import dataset
 db = dataset.connect('postgres://postgres@0.0.0.0:5432/foo')
 test_table = db['test']
 
-db.insert({'num': 10, 'data': 'foo'})
+test_table.insert({'num': 10, 'data': 'foo'})
 
 recs = db.query("SELECT * FROM test;")
 
@@ -163,7 +163,7 @@ dat = [(2, 'foo'), (5, 'bar')]
 with psycopg2.connect('postgres://postgres@0.0.0.0:5432/foo') as conn:
     with conn.cursor() as cur:
         query = "INSERT INTO test(num, data) VALUES (%s, %s)"
-        execute_batch(cur, dat)
+        execute_batch(cur, query, dat)
 
 ```
 
